@@ -1,6 +1,14 @@
 import os
 
 def validar_opcao(msg):
+    """ Valida que a opção digitada pelo usuário seja um número inteiro entre 1 e 4
+    
+    Input:
+    - texto: str - A opção escolhida pelo usuário
+
+    Output:
+    - número: int - A opção convertida pala número inteiro e validada 
+    """
     while True:
         try:
             opcao = int(input(msg))
@@ -9,6 +17,14 @@ def validar_opcao(msg):
             print('\nERRO: Digite um número inteiro entre 1 e 4.')
 
 def validar_categoria(msg):
+    """ Valida que a categoria digitada pelo usuário contenha apenas letras e espaços
+    
+    Input:
+    - texto: str - A categoria digitada pelo usuário
+
+    Output:
+    - texto: str - A categoria validada
+    """
     while True:
         try:
             categoria = input(msg)
@@ -18,6 +34,11 @@ def validar_categoria(msg):
             print('ERRO: Digite uma categoria válida.')
 
 def exibir_subtitulo(msg):
+    """ Exibe um subtítulo estilizado
+    
+    Inputs:
+    - texto: str - O texto do subtítulo
+    """
     os.system('clear')
     linha = '=' * len(msg)
     print(linha)
@@ -26,6 +47,7 @@ def exibir_subtitulo(msg):
     print()
         
 def menu():
+    """ Exibe o menu e suas opções """
     print('''
 ░██████╗░█████╗░██████╗░░█████╗░██████╗░  ███████╗██╗░░██╗██████╗░██████╗░███████╗░██████╗░██████╗
 ██╔════╝██╔══██╗██╔══██╗██╔══██╗██╔══██╗  ██╔════╝╚██╗██╔╝██╔══██╗██╔══██╗██╔════╝██╔════╝██╔════╝
@@ -40,9 +62,19 @@ def menu():
     print('4. Sair')
 
 def finalizar_app():
+    """ Exibe mensagem de encerramento do programa  """
     exibir_subtitulo('App finalizado')
 
 def cadastrar_restaurante(restaurantes):
+    """ Cadastra novos restaurantes na lista
+    
+    Inputs:
+    - list: str - A lista com todos os restaurantes
+
+    Outputs:
+    - Exibe mensagem de sucesso para o cadastro de um novo restaurante
+    - list: str - Retorna a lista de restaurantes atualizada
+    """
     exibir_subtitulo('Cadastro de novos restaurantes')
     nome_restaurante = input('Digite o nome do restaurante: ').title()
     categoria = validar_categoria('Digite a categoria do restaurante: ').title()
@@ -53,6 +85,14 @@ def cadastrar_restaurante(restaurantes):
     return restaurantes
 
 def listar_restaurantes(restaurantes):
+    """ Lista os restaurantes cadastrados
+
+    Inputs:
+    - list: str - A lista com todos os restaurantes
+
+    Outputs:
+    - Exibe a lista de restaurantes cadastrados
+    """
     exibir_subtitulo('Listando os restaurantes')
     print(f'{'Nome do Restaurante'.ljust(24)} | {'Categoria'.ljust(20)} | Status')
     for i, restaurante in enumerate(restaurantes, start=1):
@@ -60,6 +100,14 @@ def listar_restaurantes(restaurantes):
         print(f'\n{i} - {restaurante['nome'].ljust(20)} | {restaurante['categoria'].ljust(20)} | {status}')
 
 def alternar_estado(restaurantes):
+    """ Alterna o status ativado/desativado de um restaurante 
+    
+    Inputs:
+    - list: str - A lista com todos os restaurantes
+
+    Outputs:
+    - Exibe mensagem indicando o sucesso da operação
+    """
     exibir_subtitulo('Alternando estado do restaurante')
     nome_restaurante = input('Digite o nome do restaurante que deseja alterar o estado: ').title().strip()
     restaurante_encontrado = False
@@ -75,6 +123,11 @@ def alternar_estado(restaurantes):
         print('O restaurante não foi encontrado.')
 
 def app():
+    """ Solicita e executa a opção escolhida pelo usuário
+    
+    Outputs:
+    - Executa a opção escolhida pelo usuário
+    """
     restaurantes = []
     while True:
         menu()
