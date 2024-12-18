@@ -23,19 +23,6 @@ class Restaurante:
     def alternar_status(self): # método para os objetos
         self._status = not self._status
 
-restaurante_praca = Restaurante('Praça', 'Gourmet')
-#print(restaurante_praca)
-#print(dir(restaurante_praca)) # função dir() - atributos, métodos, tudo relacionado a classes
-#print(vars(restaurante_praca)) # função vars() - visualizar um dicionário dos atributos e métodos relacionados ao objeto instanciado da classe
 
-restaurante_praca.alternar_status()
-
-restaurante_pizza_express = Restaurante('Pizza Express', 'Italiano')
-#print(vars(restaurante_pizza_express))
-
-#print(restaurante_pizza_express) # o print agora usa o método __str__
-#print(restaurante_praca)
-
-
-
-Restaurante.listar_restaurantes()
+# função dir() - atributos, métodos, tudo relacionado a classes
+# função vars() - visualizar um dicionário dos atributos e métodos relacionados ao objeto instanciado da classe
